@@ -52,3 +52,15 @@ post '/create_comment/:post_id' do
   @comment = Comment.create(content: params[:content], post_id: params[:post_id], user_id: session[:id])
   redirect '/'
 end
+
+post '/signup' do
+  if params[:password] == params[:confirm_password]
+    @new_user = User.create(username: params[:username], password: params[:password])
+    session[:id] = @new_user.id
+    erb :index 
+  else 
+    @mismatch = "password and confirm password do not match"
+    erb :index
+  end 
+  
+end 

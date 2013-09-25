@@ -19,8 +19,27 @@ log in below
 <label for="username"> User Name </label>
 <input id="username" type="text" name="username"> <br>
 <label for="password"> Password </label>
-<input id="password" type="text" name="password"> 
+<input id="password" type="text" name="password"> <br>
 <input type="submit" value="log in">
+</form>
+<% end %> 
+
+<p><br></p>
+
+<% if @mismatch %>
+  <%= @mismatch %> <br>
+ <% end %>  
+
+<% if session[:id] == nil %>
+Sign up below 
+<form action="/signup" method="POST">
+<label for="username"> User Name </label>
+<input id="username" type="text" name="username"> <br>
+<label for="password"> Password </label>
+<input id="password" type="text" name="password"> <br>
+<label for="password"> Confirm Password </label>
+<input id="password" type="text" name="confirm_password"> <br>
+<input type="submit" value="sign up">
 </form>
 <% end %> 
 
