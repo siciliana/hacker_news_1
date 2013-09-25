@@ -9,8 +9,31 @@ get '/vote/:postid' do
   @unicorn.post_vote += 1
   @unicorn.user_id = session[:id]
   @unicorn.save
-  # @unicorn.post_vote += 1
+  
+  if request.xhr? 
+    erb :somewhere
+  else 
+    erb :index
+  end 
+
 end 
+
+post '/vote/:postid' do
+  @unicorn = Unicorn.find_or_create_by_post_id(params[:postid])
+  @unicorn.post_id = params[:postid]
+  @unicorn.post_vote += 1
+  @unicorn.user_id = session[:id]
+  @unicorn.save
+  
+  if request.xhr? 
+    content_type(:json)
+    {post_vote: @unicorn.post_vote}.to_json
+  else 
+    erb :index
+  end 
+
+end 
+
 
 get '/comments/:id' do
   @post = Post.find(params[:id])
