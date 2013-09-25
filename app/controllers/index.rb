@@ -3,6 +3,15 @@ get '/' do
 end
 
 
+get '/vote/:postid' do
+  @unicorn = Unicorn.find_or_create_by_post_id(params[:postid])
+  @unicorn.post_id = params[:postid]
+  @unicorn.post_vote += 1
+  @unicorn.user_id = session[:id]
+  @unicorn.save
+  # @unicorn.post_vote += 1
+end 
+
 get '/comments/:id' do
   @post = Post.find(params[:id])
   erb :comments

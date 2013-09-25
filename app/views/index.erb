@@ -3,7 +3,7 @@
 
 <ul>
 <% Post.all.each do |eachpost| %>
-<li><a href="http://<%= eachpost.url %>"><%= eachpost.url %></a>
+<li><a href="/vote/<%=eachpost.id%>"><img src="/images/unicorn.jpg" style="height: 20px"></a><a href="http://<%= eachpost.url %>"><%= eachpost.url %> </a><%= eachpost.unicorns.first.post_vote %> votes 
   <p> by <%= eachpost.user.username %> | <a href="/comments/<%= eachpost.id %>"> <%= eachpost.comments.count %> comments</a></li>
 <% end %> 
 </ul>
