@@ -1,13 +1,13 @@
 
  
-<h1>Slacker News</h1>
+<h1><center><img src="/images/unicorn.jpg" style="height:75px"></img> Slacker News <img src="/images/unicorn.jpg" style="height:75px"></img></h1></center>
 
 <ul>
 <% Post.all.each do |eachpost| %>
   <li>
-    <a class="vote" href="/vote/<%=eachpost.id%>">vote </a>
+    <a class="vote" href="/vote/<%=eachpost.id%>">vote-up! | </a>
     <a id="unicorn" href="http://<%= eachpost.url %>"><%= eachpost.url %> </a>
-    <div class="ajaxvotes" data-value="<%=eachpost.id%>"><%= eachpost.unicorns.first.post_vote %> votes</div>
+    <div class="ajaxvotes" data-value="<%=eachpost.id%>"><%= eachpost.unicorns.first.try(:post_vote) %> votes</div> 
     <p> by <%= eachpost.user.username %> | <a href="/comments/<%= eachpost.id %>"> <%= eachpost.comments.count %> comments</a></p>
   </li>
 <% end %> 

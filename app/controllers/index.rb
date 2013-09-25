@@ -16,23 +16,7 @@ get '/vote/:postid' do
     erb :index
   end 
 
-end 
-
-post '/vote/:postid' do
-  @unicorn = Unicorn.find_or_create_by_post_id(params[:postid])
-  @unicorn.post_id = params[:postid]
-  @unicorn.post_vote += 1
-  @unicorn.user_id = session[:id]
-  @unicorn.save
-  
-  if request.xhr? 
-    content_type(:json)
-    {post_vote: @unicorn.post_vote}.to_json
-  else 
-    erb :index
-  end 
-
-end 
+end
 
 
 get '/comments/:id' do
@@ -95,4 +79,20 @@ post '/signup' do
     erb :index
   end 
   
+end 
+
+post '/vote/:postid' do
+  @unicorn = Unicorn.find_or_create_by_post_id(params[:postid])
+  @unicorn.post_id = params[:postid]
+  @unicorn.post_vote += 1
+  @unicorn.user_id = session[:id]
+  @unicorn.save
+  
+  if request.xhr? 
+    content_type(:json)
+    {post_vote: @unicorn.post_vote}.to_json
+  else 
+    erb :index
+  end 
+
 end 

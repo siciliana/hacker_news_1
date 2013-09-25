@@ -5,9 +5,15 @@
 
 <ul>
 <% @post.comments.each do |eachcomment| %>  
-<li><%= eachcomment.user.username %></li>
-<p><%= eachcomment.content %></p>
-<% end %>
+  <li>
+    <p><%= eachcomment.content %></p>
+    <%= eachcomment.user.username %> | 
+    <a class="vote" href="/vote/<%=eachcomment.id%>">vote-up! </a>     
+  
+  <div class="ajaxvotes" data-value="<%=eachcomment.id%>"><%= eachcomment.rainbows.first.try(:comment_vote) %> votes</div> 
+
+    <% end %>
+</li>
 </ul>
 
 <p>Post Comment Below!</p>
@@ -15,3 +21,6 @@
 <textarea name="content" rows="10" cols="50"></textarea>
 <p><br></p> 
 <input type="submit" value="submit">
+
+<p><br></p>
+<a href="/">Home</a>
