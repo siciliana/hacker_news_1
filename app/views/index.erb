@@ -5,7 +5,7 @@
 <ul>
 <% Post.all.each do |eachpost| %>
   <li>
-    <a class="vote" href="/vote/<%=eachpost.id%>">vote-up! | </a>
+    <a class="vote" href="/vote/<%=eachpost.id%>">vote-up!</a> | 
     <a id="unicorn" href="http://<%= eachpost.url %>"><%= eachpost.url %> </a>
     <div class="ajaxvotes" data-value="<%=eachpost.id%>"><%= eachpost.unicorns.first.try(:post_vote) %> votes</div> 
     <p> by <%= eachpost.user.username %> | <a href="/comments/<%= eachpost.id %>"> <%= eachpost.comments.count %> comments</a></p>

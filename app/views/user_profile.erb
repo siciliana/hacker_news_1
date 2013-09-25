@@ -1,19 +1,20 @@
 <h1><%= @user.username %>'s Profile</h1>
 
+<center><img src="/images/rainbowbrite.jpg" style="height:200px; border-radius: 20%"></center></img>
+
 <h2>User Posts:</h2>
 <% @user_posts.each do |eachpost| %>
 <li><%= eachpost.url %></li>
 <% end %>
 
+<div class ="user_comments">
+  <h2>User Comments:</h2>
+  <% @user_comments.each do |eachcomment| %>
+    <li id="commentlink"><%= eachcomment.post.url %> | <div id="commenttext"><%= eachcomment.content %></div></li>
+  <% end %>
+</div>
 
-<h2>User Comments:</h2>
-<% @user_comments.each do |eachcomment| %>
-<li><%= eachcomment.post.url %> | <%= eachcomment.content %></li>
-<% end %>
-
+<p><br></p>
 <a href='/'> Home </a> <br> 
 <a href='/logout'> Log Out </a>
-<!-- 
-A page showing all a user's submissions
-A page showing all a user's comments
- -->
+

@@ -1,4 +1,6 @@
-
+h1 {
+  text-align: center;
+}
 
 .container {
   margin: 20px auto;
@@ -7,7 +9,12 @@
   border: 1px dotted black;
   background-color: violet;
   opacity: 25%;
+  border-radius: 90%;
 }
 th {
   text-align: left;
-}
+} 
+/*
+.user_comments {
+  text-align: center;
+}*/
