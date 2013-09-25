@@ -1,0 +1,11 @@
+<!-- Here are the comments!  -->
+
+
+
+
+<ul>
+<% @post.comments.each do |eachcomment| %>  
+<li><%= eachcomment.user.username %></li>
+<p><%= eachcomment.content %></p>
+<% end %>
+</ul>
