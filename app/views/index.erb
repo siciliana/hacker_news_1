@@ -8,10 +8,12 @@
 <% end %> 
 </ul>
 
+
 <% if @notpass %>
 <%= @notpass  %> <br>
 <% end %>  
 
+<% if session[:id] == nil %>
 log in below 
 <form action="/login" method="POST">
 <label for="username"> User Name </label>
@@ -20,3 +22,10 @@ log in below
 <input id="password" type="text" name="password"> 
 <input type="submit" value="log in">
 </form>
+<% end %> 
+
+<% if session[:id] %>
+<a href='/create_post'> Create Post </a><br>
+<a href='/logout'> Log Out </a>
+<% end %>
+

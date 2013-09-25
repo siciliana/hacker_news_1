@@ -9,15 +9,15 @@ get '/comments/:id' do
 end 
 
 get '/logout' do 
-  session[:id].destroy
-  end
-  erb :index
+  session.clear
+  redirect '/'
 end
 
 get '/create_post' do
   erb :create_post
 end 
 
+# =========POST===========
 post '/login' do 
   @user = User.find_by_username(params[:username])
   if @user 
@@ -34,8 +34,13 @@ post '/login' do
   end 
 end
 
+post '/create_post' do
 
-# post '/create_post/:user_id' do
-#   @url = Post.create(params[:url], params[:user_id])
-#   erb :
-# end 
+  @url = Post.create(url: params[:url], user_id: session[:id])
+  redirect '/'
+end 
+
+post '/create_comment/:post_id' do
+  @comment = Comment.create(content: params[:content], post_id: params[:post_id], user_id: session[:id])
+  redirect '/'
+end
