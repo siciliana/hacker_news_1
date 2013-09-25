@@ -17,6 +17,14 @@ get '/create_post' do
   erb :create_post
 end 
 
+get '/profile/:id' do
+  @user = User.find(params[:id])
+  @user_posts = @user.posts
+  @user_comments = @user.comments
+  erb :user_profile
+end
+
+
 # =========POST===========
 post '/login' do 
   @user = User.find_by_username(params[:username])

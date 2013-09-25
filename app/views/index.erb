@@ -1,8 +1,8 @@
 
-<h1>Hacker News</h1>
+<h1>Slacker News</h1>
 
 <ul>
-<li> <% Post.all.each do |eachpost| %></li>
+<% Post.all.each do |eachpost| %>
 <li><%= eachpost.url %> 
   <p> by <%= eachpost.user.username %> | <a href="/comments/<%= eachpost.id %>"> <%= eachpost.comments.count %> comments</a></li>
 <% end %> 
@@ -26,6 +26,7 @@ log in below
 
 <% if session[:id] %>
 <a href='/create_post'> Create Post </a><br>
-<a href='/logout'> Log Out </a>
+<a href='/logout'> Log Out </a><br>
+<a href='/profile/<%=session[:id]%>'> My profile page </a>
 <% end %>
 
